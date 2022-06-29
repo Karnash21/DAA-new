@@ -78,7 +78,7 @@ arr = []
 x = []
 y = []
 n = []
-for i in range(1, 20000):
+for i in range(1, 50000, 500):
     # n = len(arr)
     for j in range(i):
         temp = randint(0, 100000)
@@ -91,14 +91,14 @@ for i in range(1, 20000):
     mergeSort(arr, 0, i-1)
     end = timeit.default_timer()
     y.append(end - start)
-    n.append(i*log2(i)*0.00000112)
+    n.append(i*log2(i)*0.00000103)
     # print(end - start)
     # print("\n\nSorted array is")
     # for l in range(i):
     #     print("%d" % arr[l],end=" ")
     # print("\n")
-plt.plot(x, y, label = 'MergeSort')
-plt.plot(x, n, label = 'nlogn')
+plt.plot(x, y, label = 'MergeSort', color = 'blue')
+plt.plot(x, n, label = 'nlogn', color = 'red')
 plt.legend()
 plt.xlabel('Array size ------>')
 plt.ylabel('Time taken (s) ------>')
