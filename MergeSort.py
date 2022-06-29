@@ -47,7 +47,7 @@ n = []
 for i in range(1, 5000, 50):
     for j in range(i):
         temp = randint(0, 100000)
-        arr.append(temp)
+        arr.append(temp)#appends a random value to the end of array
     x.append(i)
     start = timeit.default_timer()#starts timer
     mergeSort(arr, 0, i-1)

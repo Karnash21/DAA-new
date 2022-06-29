@@ -3,29 +3,24 @@ import random
 
 import matplotlib.pyplot as plt
 
-def zeroPad(numberString, zeros, left = True):
-    """Return the string with zeros added to the left or right."""
+def addzero(numberString, zeros, left = True):
     for i in range(zeros):
         if left:
             numberString = '0' + numberString
         else:
             numberString = numberString + '0'
     return numberString
-def karatsubaMultiplication(x ,y):
-    """Multiply two integers using Karatsuba's algorithm."""
-    #convert to strings for easy access to digits
+def multiply(x ,y):
     x = str(x)
     y = str(y)
-    #base case for recursion
     if len(x) == 1 and len(y) == 1:
         return int(x) * int(y)
     if len(x) < len(y):
-        x = zeroPad(x, len(y) - len(x))
+        x = addzero(x, len(y) - len(x))
     elif len(y) < len(x):
-        y = zeroPad(y, len(x) - len(y))
+        y = addzero(y, len(x) - len(y))
     n = len(x)
     j = n//2
-    #for odd digit integers
     if (n % 2) != 0:
         j += 1    
     BZeroPadding = n - j
@@ -34,12 +29,11 @@ def karatsubaMultiplication(x ,y):
     b = int(x[j:])
     c = int(y[:j])
     d = int(y[j:])
-    #recursively calculate
-    ac = karatsubaMultiplication(a, c)
-    bd = karatsubaMultiplication(b, d)
-    k = karatsubaMultiplication(a + b, c + d)
-    A = int(zeroPad(str(ac), AZeroPadding, False))
-    B = int(zeroPad(str(k - ac - bd), BZeroPadding, False))
+    ac = multiply(a, c)
+    bd = multiply(b, d)
+    k = multiply(a + b, c + d)
+    A = int(addzero(str(ac), AZeroPadding, False))
+    B = int(addzero(str(k - ac - bd), BZeroPadding, False))
     return A + B + bd
 
 n = []
@@ -52,13 +46,12 @@ for i in range(100,2000,200):
     y = random.randint(i, 10**i)
 
     start = time.time_ns()
-    z = karatsubaMultiplication(x, y)
+    z = multiply(x, y)
     end = time.time_ns()
 
     n.append(len(str(x)))
-    #print("n ke value=",n)
-    executionTime = end - start
-    et.append(executionTime * 0.00005975)
+    # executionTime = end - start
+    et.append((end - start) * 0.00005975)
    
     max_len=len(str(max(x,y)))
    
