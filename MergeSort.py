@@ -85,7 +85,6 @@ for i in range(1, 20000):
         arr.append(temp)
     # print("Given array is")
     # for k in range(i):
-    #     print("%d" % arr[k],end=" ")
 
     x.append(i)
     start = timeit.default_timer()
