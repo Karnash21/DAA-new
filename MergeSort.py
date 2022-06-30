@@ -44,14 +44,14 @@ arr = []
 x = []
 y = []
 n = []
-for i in range(1, 5000, 50):
+for i in range(1, 50000, 200):
     for j in range(i):
         temp = randint(0, 100000)
         arr.append(temp)#appends a random value to the end of array
     x.append(i)
-    start = timeit.default_timer()#starts timer
+    start = timeit.default_timer()#for calculating time
     mergeSort(arr, 0, i-1)
-    end = timeit.default_timer()#stops timer
+    end = timeit.default_timer()#for calculating time
     y.append(end - start)
     n.append(i*log2(i)*0.00000103)
 plt.plot(x, y, label = 'MergeSort', color = 'blue')
@@ -60,4 +60,4 @@ plt.legend()
 plt.xlabel('Array size ------>')
 plt.ylabel('Time taken (s) ------>')
 plt.title('Merge Sort')
-plt.show()
+plt.show()#shows graph
