@@ -44,7 +44,7 @@ arr = []
 x = []
 y = []
 n = []
-for i in range(1, 50000, 200):
+for i in range(1, 5000, 200):
     for j in range(i):
         temp = randint(0, 100000)
         arr.append(temp)#appends a random value to the end of array
@@ -53,7 +53,7 @@ for i in range(1, 50000, 200):
     mergeSort(arr, 0, i-1)
     end = timeit.default_timer()#for calculating time
     y.append(end - start)
-    n.append(i*log2(i)*0.00000103)
+    n.append(i*log2(i)*0.0000012)
 plt.plot(x, y, label = 'MergeSort', color = 'blue')
 plt.plot(x, n, label = 'nlogn', color = 'red')
 plt.legend()

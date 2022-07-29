@@ -53,7 +53,7 @@ for i in range(1,2000,200):
     end = time.time_ns()#for calculating time
 
     n.append(len(str(x)))
-    et.append((end - start) * 0.00005975)
+    et.append((end - start) * 0.00005972)
 
     max_len=len(str(max(x,y)))
     n_y.append((max_len**(1.6)))
